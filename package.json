@@ -1,0 +1,12 @@
+{
+  "name": "kaede",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "author": "kae<backslashvy@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.7.23",
+    "discord.js": "^14.5.0",
+    "dotenv": "^16.0.3"
+  }
+}
