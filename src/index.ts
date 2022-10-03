@@ -38,7 +38,7 @@ Kaede.on('messageCreate', async (message) => {
 
     const cmd = Kaede.commands.get(command) || Kaede.aliases.get(command);
 
-    cmd?.run({ Kaede, message, args, EmbedBuilder, PermissionsBitField });
+    cmd?.run({ fs, Kaede, message, args, EmbedBuilder, PermissionsBitField });
 });
 
 Kaede.login(process.env.token);
