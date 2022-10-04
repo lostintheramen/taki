@@ -36,6 +36,8 @@ Kaede.on('messageCreate', async (message) => {
     const args = commandBody.split(' ');
     const command = args.shift()?.toLowerCase();
 
+    if (command == 'none') return;
+
     const cmd = Kaede.commands.get(command) || Kaede.aliases.get(command);
 
     cmd?.run({ fs, Kaede, message, args, EmbedBuilder, PermissionsBitField });

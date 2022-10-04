@@ -14,7 +14,7 @@ module.exports = {
             
             return message.channel.send({embeds: [
                 new EmbedBuilder()
-                    .setAuthor({name: message.author.username.toLowerCase(), iconURL: message.author.avatarURL()})
+                    .setAuthor({ name: message.author.username.toLowerCase(), iconURL: message.author.avatarURL() })
                     .setTimestamp()
                     .setColor('#2F3136')
                     .setTitle('Help sections')
@@ -33,7 +33,7 @@ module.exports = {
             
                         return message.channel.send({embeds: [
                             new EmbedBuilder()
-                                .setAuthor({name: message.author.username.toLowerCase(), iconURL: message.author.avatarURL()})
+                                .setAuthor({ name: message.author.username.toLowerCase(), iconURL: message.author.avatarURL() })
                                 .setTimestamp()
                                 .setColor('#2F3136')
                                 .setTitle(commandFile.name)
@@ -43,14 +43,17 @@ module.exports = {
                 }
 
                 if(args[0].toLowerCase() == folder.toLowerCase()) {
-                    const embed = new EmbedBuilder();
+                    const embed = new EmbedBuilder()
+                        .setAuthor({ name: message.author.username.toLowerCase(), iconURL: message.author.avatarURL() })
+                        .setTimestamp()
+                        .setColor('#2F3136');
 
                     for (const file of fs.readdirSync(`./src/commands/${folder}/`).filter((file) => file.endsWith('.ts'))) {
                         const commandFile = require(`../${folder}/${file}`);
 
                         embed
                             .setTitle(`${folder} commands`)
-                            .addFields({name: `${commandFile.name}`, value: `${commandFile.description}\n`})
+                            .addFields({ name: `${commandFile.name}`, value: `${commandFile.description}\n` })
                     }
                     return message.channel.send({embeds: [embed]});
                 } else {
