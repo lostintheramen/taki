@@ -8,7 +8,7 @@ const Kaede = new Client({
 });
 
 Kaede.on('ready', () => {
-    console.info('✓ :: Online');
+    console.log('✓ :: Online');
 });
 
 Kaede.commands = new Collection();
