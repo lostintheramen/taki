@@ -2,6 +2,7 @@ module.exports = {
     name: 'Kick',
     aliases: ['K'],
     description: 'If you have permissions to, will kick a specified user',
+    usage: '`-k (@mention)`',
     async run({ message, args, EmbedBuilder, PermissionsBitField }) {
         if (!message.member.permissions.has(PermissionsBitField.Flags.KickMembers)) return;
 

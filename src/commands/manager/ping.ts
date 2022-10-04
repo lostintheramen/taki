@@ -2,6 +2,7 @@ module.exports = {
     name: 'Ping',
     aliases: ['Latency'],
     description: 'See the bot client & Discord API ping',
+    usage: '`-ping`',
     run({ Kaede, message, EmbedBuilder, PermissionsBitField }) {
         if (!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
 

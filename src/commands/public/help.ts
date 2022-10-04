@@ -2,6 +2,7 @@ module.exports = {
     name: 'Help',
     aliases: ['Commands'],
     description: 'Get information about any command',
+    usage: '`-help <section/command>`',
     run({ fs, Kaede, message, args, EmbedBuilder }) {
         const commandFolders = fs.readdirSync('./src/commands/');
 

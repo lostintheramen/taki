@@ -2,6 +2,7 @@ module.exports = {
     name: 'Ban',
     aliases: ['B'],
     description: 'If you have permissions to, will ban a specified user',
+    usage: '`-b (@mention)`',
     async run({ message, args, EmbedBuilder, PermissionsBitField }) {
         if (!message.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return;
 

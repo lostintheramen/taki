@@ -4,6 +4,7 @@ module.exports = {
     name: 'Packages',
     aliases: ['Dependencies', 'Pkg'],
     description: 'A list of dependencies used in the creation of this bot',
+    usage: '`-pkg`',
     run({ message, EmbedBuilder }) {
         if (message.author.id !== '999047650911473704') return;
 
