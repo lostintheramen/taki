@@ -38,7 +38,7 @@ module.exports = {
                                 .setTimestamp()
                                 .setColor('#2F3136')
                                 .setTitle(commandFile.name)
-                                .setDescription(`Aliases: ${commandFile.aliases.join(', ')}`)
+                                .setDescription(`Description: ${commandFile.description}\nUsage: ${commandFile.usage}\nAliases: ${commandFile.aliases.join(', ')}`)
                         ]});
                     }
                 }
