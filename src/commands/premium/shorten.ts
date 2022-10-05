@@ -1,6 +1,6 @@
 module.exports = {
     name: 'Shorten',
-    aliases: ['Tinyurl', 'Url'],
+    aliases: ['Url'],
     description: 'Shorten long URLs',
     usage: '`-url [link]`',
     async run({ client, message, args, EmbedBuilder }) {

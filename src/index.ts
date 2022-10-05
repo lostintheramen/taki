@@ -42,8 +42,6 @@ for (const folder of folders) {
 }
 
 Kaede.on('messageCreate', async (message) => {
-    console.table(Kaede.commands, Kaede.aliases);
-
     if (message.author.bot || !message.guild) return;
 
     const prefix = '-';
