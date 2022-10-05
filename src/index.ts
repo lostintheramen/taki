@@ -1,5 +1,19 @@
 require('dotenv').config();
 
+const { MongoClient } = require('mongodb');
+
+const client = new MongoClient(process.env.uri);
+
+async function connectMongo() {
+    try {
+        await client.connect();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+connectMongo().catch(console.error);
+
 const { Client, Collection, EmbedBuilder, PermissionsBitField } = require('discord.js');
 const fs = require('fs');
 
@@ -7,7 +21,7 @@ const Kaede = new Client({
     intents: 3276799
 });
 
-Kaede.on('ready', () => {
+Kaede.on('ready', async () => {
     console.log('✓ :: Online');
 });
 
@@ -28,6 +42,8 @@ for (const folder of folders) {
 }
 
 Kaede.on('messageCreate', async (message) => {
+    console.table(Kaede.commands, Kaede.aliases);
+
     if (message.author.bot || !message.guild) return;
 
     const prefix = '-';
@@ -40,7 +56,7 @@ Kaede.on('messageCreate', async (message) => {
 
     const cmd = Kaede.commands.get(command) || Kaede.aliases.get(command);
 
-    cmd?.run({ fs, Kaede, message, args, EmbedBuilder, PermissionsBitField });
+    cmd?.run({ client, fs, Kaede, message, args, EmbedBuilder, PermissionsBitField });
 });
 
 Kaede.login(process.env.token);
