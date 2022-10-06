@@ -5,10 +5,8 @@
   "author": "kae<backslashvy@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^18.7.23",
     "discord.js": "^14.5.0",
     "dotenv": "^16.0.3",
-    "mongodb": "^4.10.0",
-    "typescript": "^4.8.4"
+    "mongodb": "^4.10.0"
   }
 }
