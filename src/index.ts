@@ -57,4 +57,4 @@ Kaede.on('messageCreate', async (message) => {
     cmd?.run({ client, fs, Kaede, message, args, EmbedBuilder, PermissionsBitField });
 });
 
-Kaede.login(process.env.token);
+Kaede.login(process.env.token); 
