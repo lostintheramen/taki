@@ -3,14 +3,14 @@ module.exports = {
     aliases: ['Commands'],
     description: 'Get information about any command',
     usage: '`-help <section/command>`',
-    run({ fs, Kaede, message, args, EmbedBuilder }) {
+    run({ fs, Taki, message, args, EmbedBuilder }) {
         const commandFolders = fs.readdirSync('./src/commands/');
 
         let sections = [''];
 
         if(!args[0]) {
             for (const folder of commandFolders) {
-                sections = [...sections, `\n- **${folder}**`];
+                sections.push(`\n· ${folder}`);
             }
             
             return message.channel.send({embeds: [
@@ -29,7 +29,7 @@ module.exports = {
             for (const folder of commandFolders) {
                 for (const file of fs.readdirSync(`./src/commands/${folder}/`).filter((file) => file.endsWith('.ts'))) {
                     const commandFile = require(`../${folder}/${file}`);
-                    if(commandFile == Kaede.commands.get(args[0].toLowerCase()) || commandFile == Kaede.aliases.get(args[0].toLowerCase())) {
+                    if(commandFile == Taki.commands.get(args[0].toLowerCase()) || commandFile == Taki.aliases.get(args[0].toLowerCase())) {
 
             
                         return message.channel.send({embeds: [

@@ -17,31 +17,31 @@ connectMongo().catch(console.error);
 const { Client, Collection, EmbedBuilder, PermissionsBitField } = require('discord.js');
 const fs = require('fs');
 
-const Kaede = new Client({
+const Taki = new Client({
     intents: 3276799
 });
 
-Kaede.on('ready', async () => {
+Taki.on('ready', async () => {
     console.log('✓ :: Online');
 });
 
-Kaede.commands = new Collection();
-Kaede.aliases = new Collection();
+Taki.commands = new Collection();
+Taki.aliases = new Collection();
 
 const folders = fs.readdirSync('./src/commands/');
 
 for (const folder of folders) {
     for (const file of fs.readdirSync(`./src/commands/${folder}/`).filter((file) => file.endsWith('.ts'))) {
         const command = require(`./commands/${folder}/${file}`);
-        Kaede.commands.set(command.name.toLowerCase(), command);
+        Taki.commands.set(command.name.toLowerCase(), command);
 
         command.aliases.forEach((alias) => {
-            Kaede.aliases.set(alias.toLowerCase(), command);
+            Taki.aliases.set(alias.toLowerCase(), command);
         });
     }
 }
 
-Kaede.on('messageCreate', async (message) => {
+Taki.on('messageCreate', async (message) => {
     if (message.author.bot || !message.guild) return;
 
     const prefix = '-';
@@ -52,9 +52,9 @@ Kaede.on('messageCreate', async (message) => {
 
     if (command == 'none') return;
 
-    const cmd = Kaede.commands.get(command) || Kaede.aliases.get(command);
+    const cmd = Taki.commands.get(command) || Taki.aliases.get(command);
 
-    cmd?.run({ client, fs, Kaede, message, args, EmbedBuilder, PermissionsBitField });
+    cmd?.run({ client, fs, Taki, message, args, EmbedBuilder, PermissionsBitField });
 });
 
-Kaede.login(process.env.token); 
+Taki.login(process.env.token); 
